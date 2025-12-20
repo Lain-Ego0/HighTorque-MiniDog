@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<library path="dm_imu_hardware">
+  <class type="dm_imu::ImuHardware" base_class_type="hardware_interface::SensorInterface">
+    <description>dm_imu ros2_control IMU hardware</description>
+  </class>
+</library>
+

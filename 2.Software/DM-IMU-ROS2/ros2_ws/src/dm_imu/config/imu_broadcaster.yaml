@@ -1,0 +1,10 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    imu_broadcaster:
+      type: imu_sensor_broadcaster/IMUSensorBroadcaster
+
+imu_broadcaster:
+  ros__parameters:
+    sensor_name: imu
+    frame_id: imu_link
