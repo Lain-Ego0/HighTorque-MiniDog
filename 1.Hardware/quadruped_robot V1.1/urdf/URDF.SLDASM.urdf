@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  四足机器人URDF模型主文件
+  机器人名称：quadruped_robot
+  命名规范：fl=front_left(前左)、fr=front_right(前右)、rl=rear_left(后左)、rr=rear_right(后右)
+  肢体规范：hip(髋部)、thigh(大腿)、calf(小腿)、foot(脚部)
+  关节类型：revolute(旋转关节，单自由度转动)、fixed(固定关节，无自由度)
+  角度单位：弧度（0.5236rad = 30°）
+-->
+<robot name="quadruped_robot">
+  <!-- 材质定义：白色材质，全局复用 -->
+  <material name="white_material">
+    <!-- 颜色rgba：红(R)绿(G)蓝(B)透明度(A)，取值0~1；1 1 1 1表示纯白不透明 -->
+    <color rgba="1 1 1 1" />
+  </material>
+
+  <!-- ===================== 基座连杆：base_link (机器人核心躯干) ===================== -->
+  <link name="base_link">
+    <!-- 惯性参数：机器人运动学/动力学仿真核心参数，必须定义 -->
+    <inertial>
+      <!-- 惯性系原点：相对于当前连杆坐标系的位姿 xyz(平移) rpy(翻滚/俯仰/偏航，弧度) -->
+      <origin xyz="-0.0014 0.0001 0.0135" rpy="0 0 0" />
+      <!-- 连杆质量，单位：kg -->
+      <mass value="2.6821" />
+      <!-- 惯性张量：6个分量(ixx,ixy,ixz,iyy,iyz,izz)，描述刚体绕各轴的转动惯量，单位：kg·m² -->
+      <inertia ixx="0.0068" ixy="0.0000" ixz="0.0003" iyy="0.0120" iyz="0.0000" izz="0.0122" />
+    </inertial>
+    <!-- 视觉几何：RViz等可视化工具中显示的模型，仅用于视觉展示 -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <!-- 引用STL三维模型：package://表示ROS功能包路径，对应quadruped_robot功能包的meshes目录 -->
+        <mesh filename="package://quadruped_robot/meshes/base_link.STL" />
+      </geometry>
+      <!-- 复用全局定义的白色材质 -->
+      <material name="white_material" />
+    </visual>
+    <!-- 碰撞几何：物理仿真/碰撞检测的几何模型，与视觉模型一致保证检测精度 -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ===================== 前左腿(FL)：髋部 连杆+关节 ===================== -->
+  <!-- 前左髋部连杆：fl_hip -->
+  <link name="fl_hip">
+    <inertial>
+      <origin xyz="0.1031 0.05 0.0424" rpy="0 0 0" />
+      <mass value="0.2924" />
+      <inertia ixx="0.0013" ixy="-0.0015" ixz="-0.0013" iyy="0.0037" iyz="-0.0006" izz="0.0039" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FL_hip.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FL_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 前左髋关节：旋转关节，连接基座-前左髋部 -->
+  <joint name="fl_hip_joint" type="revolute">
+    <!-- 关节坐标系：相对于父连杆(base_link)的位姿 -->
+    <origin xyz="0.0909 0.04 0" rpy="0 0 0" />
+    <parent link="base_link" />  <!-- 父连杆 -->
+    <child link="fl_hip" />     <!-- 子连杆 -->
+    <axis xyz="-1 0 0" />       <!-- 旋转轴方向：X轴负方向 -->
+    <!-- 旋转关节限位：lower(下限位) upper(上限位) effort(最大输出力矩/N·m) velocity(最大角速度/rad/s) -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 前左腿(FL)：大腿 连杆+关节 ===================== -->
+  <!-- 前左大腿连杆：fl_thigh -->
+  <link name="fl_thigh">
+    <inertial>
+      <origin xyz="0.103 0.1089 0.0308" rpy="0 0 0" />
+      <mass value="0.4104" />
+      <inertia ixx="0.0058" ixy="-0.0046" ixz="-0.0013" iyy="0.0053" iyz="-0.0013" izz="0.0094" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FL_thigh.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FL_thigh.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 前左大腿关节：旋转关节，连接前左髋部-前左大腿 -->
+  <joint name="fl_thigh_joint" type="revolute">
+    <origin xyz="0.034 0.0254 0" rpy="0 0 0" />
+    <parent link="fl_hip" />
+    <child link="fl_thigh" />
+    <axis xyz="0 1 0" />       <!-- 旋转轴方向：Y轴正方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 前左腿(FL)：小腿 连杆+关节 ===================== -->
+  <!-- 前左小腿连杆：fl_calf -->
+  <link name="fl_calf">
+    <inertial>
+      <origin xyz="0.1152 0.1313 -0.1304" rpy="0 0 0" />
+      <mass value="0.0403" />
+      <inertia ixx="0.0014" ixy="-0.0006" ixz="0.0006" iyy="0.0013" iyz="0.0007" izz="0.0012" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FL_calf.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FL_calf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 前左小腿关节：旋转关节，连接前左大腿-前左小腿 -->
+  <joint name="fl_calf_joint" type="revolute">
+    <origin xyz="0 0.0604 -0.12" rpy="0 0 0" />
+    <parent link="fl_thigh" />
+    <child link="fl_calf" />
+    <axis xyz="0 1 0" />       <!-- 旋转轴方向：Y轴正方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 前左腿(FL)：脚部 连杆+固定关节 ===================== -->
+  <!-- 前左脚部连杆：fl_foot -->
+  <link name="fl_foot">
+    <inertial>
+      <origin xyz="0.1103 0.1308 -0.199" rpy="0 0 0" />
+      <mass value="0.0066" />
+      <inertia ixx="0.0004" ixy="-0.0001" ixz="0.0001" iyy="0.0003" iyz="0.0002" izz="0.0002" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FL_foot.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FL_foot.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 前左脚部关节：固定关节，无转动/平移自由度，连接前左小腿-前左脚部 -->
+  <joint name="fl_foot_joint" type="fixed">
+    <origin xyz="0.00206 0.00006 -0.13694" rpy="0 0 0" />
+    <parent link="fl_calf" />
+    <child link="fl_foot" />
+    <!-- 固定关节无axis和limit标签，因为无自由度 -->
+  </joint>
+
+  <!-- ===================== 前右腿(FR)：髋部 连杆+关节 ===================== -->
+  <!-- 前右髋部连杆：fr_hip -->
+  <link name="fr_hip">
+    <inertial>
+      <origin xyz="0.1031 -0.0389 0.0426" rpy="0 0 0" />
+      <mass value="0.2924" />
+      <inertia ixx="0.0011" ixy="0.0012" ixz="-0.0013" iyy="0.0037" iyz="0.0005" izz="0.0036" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FR_hip.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FR_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 前右髋关节：旋转关节，连接基座-前右髋部 -->
+  <joint name="fr_hip_joint" type="revolute">
+    <origin xyz="0.0909 -0.04 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="fr_hip" />
+    <axis xyz="1 0 0" />        <!-- 旋转轴方向：X轴正方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 前右腿(FR)：大腿 连杆+关节 ===================== -->
+  <!-- 前右大腿连杆：fr_thigh -->
+  <link name="fr_thigh">
+    <inertial>
+      <origin xyz="0.1031 -0.0977 0.0309" rpy="0 0 0" />
+      <mass value="0.4104" />
+      <inertia ixx="0.0049" ixy="0.0041" ixz="-0.0013" iyy="0.0053" iyz="0.0011" izz="0.0085" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FR_thigh.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FR_thigh.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 前右大腿关节：旋转关节，连接前右髋部-前右大腿 -->
+  <joint name="fr_thigh_joint" type="revolute">
+    <origin xyz="0.034 -0.0254 0" rpy="0 0 0" />
+    <parent link="fr_hip" />
+    <child link="fr_thigh" />
+    <axis xyz="0 -1 0" />       <!-- 旋转轴方向：Y轴负方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 前右腿(FR)：小腿 连杆+关节 ===================== -->
+  <!-- 前右小腿连杆：fr_calf -->
+  <link name="fr_calf">
+    <inertial>
+      <origin xyz="0.1152 -0.1201 -0.1305" rpy="0 0 0" />
+      <mass value="0.0403" />
+      <inertia ixx="0.0013" ixy="0.0006" ixz="0.0006" iyy="0.0013" iyz="-0.0006" izz="0.0011" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FR_calf.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FR_calf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 前右小腿关节：旋转关节，连接前右大腿-前右小腿 -->
+  <joint name="fr_calf_joint" type="revolute">
+    <origin xyz="0 -0.0604 -0.12" rpy="0 0 0" />
+    <parent link="fr_thigh" />
+    <child link="fr_calf" />
+    <axis xyz="0 1 0" />        <!-- 旋转轴方向：Y轴正方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 前右腿(FR)：脚部 连杆+固定关节 ===================== -->
+  <!-- 前右脚部连杆：fr_foot -->
+  <link name="fr_foot">
+    <inertial>
+      <origin xyz="0.1103 -0.1208 -0.199" rpy="0 0 0" />
+      <mass value="0.0066" />
+      <inertia ixx="0.0004" ixy="0.0001" ixz="0.0001" iyy="0.0003" iyz="-0.0002" izz="0.0002" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FR_foot.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/FR_foot.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 前右脚部关节：固定关节，连接前右小腿-前右脚部 -->
+  <joint name="fr_foot_joint" type="fixed">
+    <origin xyz="0.00206 0.00006 -0.13694" rpy="0 0 0" />
+    <parent link="fr_calf" />
+    <child link="fr_foot" />
+  </joint>
+
+  <!-- ===================== 后左腿(RL)：髋部 连杆+关节 ===================== -->
+  <!-- 后左髋部连杆：rl_hip -->
+  <link name="rl_hip">
+    <inertial>
+      <origin xyz="-0.1441 0.05 0.0426" rpy="0 0 0" />
+      <mass value="0.2924" />
+      <inertia ixx="0.0013" ixy="0.0021" ixz="0.0018" iyy="0.0067" iyz="-0.0006" izz="0.0069" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RL_hip.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RL_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 后左髋关节：旋转关节，连接基座-后左髋部 -->
+  <joint name="rl_hip_joint" type="revolute">
+    <origin xyz="-0.0909 0.04 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="rl_hip" />
+    <axis xyz="-1 0 0" />       <!-- 旋转轴方向：X轴负方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 后左腿(RL)：大腿 连杆+关节 ===================== -->
+  <!-- 后左大腿连杆：rl_thigh -->
+  <link name="rl_thigh">
+    <inertial>
+      <origin xyz="-0.1468 0.1089 0.0308" rpy="0 0 0" />
+      <mass value="0.4104" />
+      <inertia ixx="0.0058" ixy="0.0066" ixz="0.0018" iyy="0.0097" iyz="-0.0013" izz="0.0139" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RL_thigh.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RL_thigh.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 后左大腿关节：旋转关节，连接后左髋部-后左大腿 -->
+  <joint name="rl_thigh_joint" type="revolute">
+    <origin xyz="-0.034 0.0254 0" rpy="0 0 0" />
+    <parent link="rl_hip" />
+    <child link="rl_thigh" />
+    <axis xyz="0 1 0" />        <!-- 旋转轴方向：Y轴正方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 后左腿(RL)：小腿 连杆+关节 ===================== -->
+  <!-- 后左小腿连杆：rl_calf -->
+  <link name="rl_calf">
+    <inertial>
+      <origin xyz="-0.1346 0.1313 -0.1304" rpy="0 0 0" />
+      <mass value="0.0403" />
+      <inertia ixx="0.0014" ixy="0.0007" ixz="-0.0007" iyy="0.0015" iyz="0.0007" izz="0.0014" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RL_calf.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RL_calf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 后左小腿关节：旋转关节，连接后左大腿-后左小腿 -->
+  <joint name="rl_calf_joint" type="revolute">
+    <origin xyz="0 0.0604 -0.12" rpy="0 0 0" />
+    <parent link="rl_thigh" />
+    <child link="rl_calf" />
+    <axis xyz="0 1 0" />        <!-- 旋转轴方向：Y轴正方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 后左腿(RL)：脚部 连杆+固定关节 ===================== -->
+  <!-- 后左脚部连杆：rl_foot -->
+  <link name="rl_foot">
+    <inertial>
+      <origin xyz="-0.1395 0.1308 -0.199" rpy="0 0 0" />
+      <mass value="0.0066" />
+      <inertia ixx="0.0004" ixy="0.0001" ixz="-0.0002" iyy="0.0004" iyz="0.0002" izz="0.0002" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RL_foot.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RL_foot.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 后左脚部关节：固定关节，连接后左小腿-后左脚部 -->
+  <joint name="rl_foot_joint" type="fixed">
+    <origin xyz="-0.00206 0.00006 -0.13694" rpy="0 0 0" />
+    <parent link="rl_calf" />
+    <child link="rl_foot" />
+  </joint>
+
+  <!-- ===================== 后右腿(RR)：髋部 连杆+关节 ===================== -->
+  <!-- 后右髋部连杆：rr_hip -->
+  <link name="rr_hip">
+    <inertial>
+      <origin xyz="-0.1441 -0.0389 0.0424" rpy="0 0 0" />
+      <mass value="0.2924" />
+      <inertia ixx="0.0011" ixy="-0.0016" ixz="0.0018" iyy="0.0067" iyz="0.0005" izz="0.0066" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RR_hip.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RR_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 后右髋关节：旋转关节，连接基座-后右髋部 -->
+  <joint name="rr_hip_joint" type="revolute">
+    <origin xyz="-0.0909 -0.04 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="rr_hip" />
+    <axis xyz="1 0 0" />        <!-- 旋转轴方向：X轴正方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 后右腿(RR)：大腿 连杆+关节 ===================== -->
+  <!-- 后右大腿连杆：rr_thigh -->
+  <link name="rr_thigh">
+    <inertial>
+      <origin xyz="-0.1467 -0.0977 0.0309" rpy="0 0 0" />
+      <mass value="0.4104" />
+      <inertia ixx="0.0049" ixy="-0.0059" ixz="0.0018" iyy="0.0097" iyz="0.0011" izz="0.013" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RR_thigh.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RR_thigh.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 后右大腿关节：旋转关节，连接后右髋部-后右大腿 -->
+  <joint name="rr_thigh_joint" type="revolute">
+    <origin xyz="-0.034 -0.0254 0" rpy="0 0 0" />
+    <parent link="rr_hip" />
+    <child link="rr_thigh" />
+    <axis xyz="0 -1 0" />       <!-- 旋转轴方向：Y轴负方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 后右腿(RR)：小腿 连杆+关节 ===================== -->
+  <!-- 后右小腿连杆：rr_calf -->
+  <link name="rr_calf">
+    <inertial>
+      <origin xyz="-0.1346 -0.1201 -0.1305" rpy="0 0 0" />
+      <mass value="0.0403" />
+      <inertia ixx="0.0013" ixy="-0.0007" ixz="-0.0007" iyy="0.0015" iyz="-0.0006" izz="0.0013" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RR_calf.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RR_calf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 后右小腿关节：旋转关节，连接后右大腿-后右小腿 -->
+  <joint name="rr_calf_joint" type="revolute">
+    <origin xyz="0 -0.0604 -0.12" rpy="0 0 0" />
+    <parent link="rr_thigh" />
+    <child link="rr_calf" />
+    <axis xyz="0 1 0" />        <!-- 旋转轴方向：Y轴正方向 -->
+    <limit lower="-0.5236" upper="0.5236" effort="2" velocity="4.7124" />
+  </joint>
+
+  <!-- ===================== 后右腿(RR)：脚部 连杆+固定关节 ===================== -->
+  <!-- 后右脚部连杆：rr_foot -->
+  <link name="rr_foot">
+    <inertial>
+      <origin xyz="-0.1395 -0.1208 -0.199" rpy="0 0 0" />
+      <mass value="0.0066" />
+      <inertia ixx="0.0004" ixy="-0.0001" ixz="-0.0002" iyy="0.0004" iyz="-0.0002" izz="0.0002" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RR_foot.STL" />
+      </geometry>
+      <material name="white_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://quadruped_robot/meshes/RR_foot.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 后右脚部关节：固定关节，连接后右小腿-后右脚部 -->
+  <joint name="rr_foot_joint" type="fixed">
+    <origin xyz="-0.00206 0.00006 -0.13694" rpy="0 0 0" />
+    <parent link="rr_calf" />
+    <child link="rr_foot" />
+  </joint>
+
+</robot>
