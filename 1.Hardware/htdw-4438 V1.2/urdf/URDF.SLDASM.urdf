@@ -9,21 +9,21 @@
   <!-- 基座连杆：机器人核心躯干 -->
   <link name="base_link">
     <inertial>
-      <origin xyz="-0.0014 0.0001 0.0135" rpy="0 0 0" />
-      <mass value="2.6821" />
-      <inertia ixx="0.0068" ixy="0.0000" ixz="0.0003" iyy="0.0120" iyz="0.0000" izz="0.0122" />
+      <origin xyz="-0.00139370 0.00012462 0.01353999" rpy="0 0 0" />
+      <mass value="2.68214792" />
+      <inertia ixx="0.00676934" ixy="-0.00002413" ixz="0.00027724" iyy="0.01195702" iyz="0.00003879" izz="0.01215361" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/base_link.STL" />
+        <mesh filename="package://htdw_4438/meshes/base_link.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/base_link.STL" />
+        <mesh filename="package://htdw_4438/meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -31,21 +31,21 @@
   <!-- 前左腿FL - 髋部：连杆+关节（基座→前左髋） -->
   <link name="fl_hip">
     <inertial>
-      <origin xyz="0.0327 0.0044 -0.0001" rpy="0 0 0" />
-      <mass value="0.2924" />
-      <inertia ixx="0.0001" ixy="0.0000" ixz="0.0000" iyy="0.0004" iyz="0.0000" izz="0.0004" />
+      <origin xyz="0.03269580 0.00444394  -0.00009507" rpy="0 0 0" />
+      <mass value="0.29235822" />
+      <inertia ixx="0.00008921" ixy="-0.00004438" ixz="0.00000113" iyy="0.00040664" iyz="0.00000010" izz="0.00040549" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FL_hip.STL" />
+        <mesh filename="package://htdw_4438/meshes/FL_hip.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FL_hip.STL" />
+        <mesh filename="package://htdw_4438/meshes/FL_hip.STL" />
       </geometry>
     </collision>
   </link>
@@ -60,21 +60,21 @@
   <!-- 前左腿FL - 大腿：连杆+关节（前左髋→前左大腿） -->
   <link name="fl_thigh">
     <inertial>
-      <origin xyz="-0.0014 0.0379 -0.0117" rpy="0 0 0" />
-      <mass value="0.4104" />
-      <inertia ixx="0.0012" ixy="0.0000" ixz="0.0000" iyy="0.0006" iyz="0.0003" izz="0.0008" />
+      <origin xyz="-0.00137569 0.03790927 -0.01165342" rpy="0 0 0" />
+      <mass value="0.41040818" />
+      <inertia ixx="0.00122480" ixy="0.00003407" ixz="-0.00003634" iyy="0.00056530" iyz="0.00028736" izz="0.00079023" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FL_thigh.STL" />
+        <mesh filename="package://htdw_4438/meshes/FL_thigh.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FL_thigh.STL" />
+        <mesh filename="package://htdw_4438/meshes/FL_thigh.STL" />
       </geometry>
     </collision>
   </link>
@@ -89,21 +89,21 @@
   <!-- 前左腿FL - 小腿：连杆+关节（前左大腿→前左小腿） -->
   <link name="fl_calf">
     <inertial>
-      <origin xyz="0.0108 -0.0001 -0.0529" rpy="0 0 0" />
-      <mass value="0.0403" />
-      <inertia ixx="0.0002" ixy="0.0000" ixz="0.0000" iyy="0.0002" iyz="0.0000" izz="0.0000" />
+      <origin xyz="0.01082722 -0.00011477 -0.05285719" rpy="0 0 0" />
+      <mass value="0.04033111" />
+      <inertia ixx="0.00017694" ixy="0.00000005" ixz="0.00002974" iyy="0.00018413" iyz="0.00000004" izz="0.00000842" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FL_calf.STL" />
+        <mesh filename="package://htdw_4438/meshes/FL_calf.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FL_calf.STL" />
+        <mesh filename="package://htdw_4438/meshes/FL_calf.STL" />
       </geometry>
     </collision>
   </link>
@@ -118,21 +118,21 @@
   <!-- 前左腿FL - 脚部：连杆+固定关节（前左小腿→前左脚） -->
   <link name="fl_foot">
     <inertial>
-      <origin xyz="0.0038 -0.0007 0.0154" rpy="0 0 0" />
-      <mass value="0.0066" />
-      <inertia ixx="0.0000" ixy="0.0000" ixz="0.0000" iyy="0.0000" iyz="0.0000" izz="0.0000" />
+      <origin xyz="0.00384334 -0.00065935 0.01540433" rpy="0 0 0" />
+      <mass value="0.00657865" />
+      <inertia ixx="0.00000202" ixy="0.00000003" ixz="-0.00000043" iyy="0.00000222" iyz="0.00000009" izz="0.00000049" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FL_foot.STL" />
+        <mesh filename="package://htdw_4438/meshes/FL_foot.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FL_foot.STL" />
+        <mesh filename="package://htdw_4438/meshes/FL_foot.STL" />
       </geometry>
     </collision>
   </link>
@@ -145,21 +145,21 @@
   <!-- 前右腿FR - 髋部：连杆+关节（基座→前右髋） -->
   <link name="fr_hip">
     <inertial>
-      <origin xyz="0.0327 -0.0044 0.0001" rpy="0 0 0" />
-      <mass value="0.2924" />
-      <inertia ixx="0.0001" ixy="0.0000" ixz="0.0000" iyy="0.0004" iyz="0.0000" izz="0.0004" />
+      <origin xyz="0.03269580 -0.00444394 0.00009507" rpy="0 0 0" />
+      <mass value="0.29235822" />
+      <inertia ixx="0.00008921" ixy="0.00004438" ixz="-0.00000113" iyy="0.00040664" iyz="0.00000010" izz="0.00040549" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FR_hip.STL" />
+        <mesh filename="package://htdw_4438/meshes/FR_hip.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FR_hip.STL" />
+        <mesh filename="package://htdw_4438/meshes/FR_hip.STL" />
       </geometry>
     </collision>
   </link>
@@ -174,21 +174,21 @@
   <!-- 前右腿FR - 大腿：连杆+关节（前右髋→前右大腿） -->
   <link name="fr_thigh">
     <inertial>
-      <origin xyz="-0.0013 -0.0379 -0.0116" rpy="0 0 0" />
-      <mass value="0.4104" />
-      <inertia ixx="0.0012" ixy="0.0000" ixz="0.0000" iyy="0.0006" iyz="-0.0003" izz="0.0008" />
+      <origin xyz="-0.00130371 -0.03791280 -0.01155686" rpy="0 0 0" />
+      <mass value="0.41040818" />
+      <inertia ixx="0.00122504" ixy="-0.00003226" ixz="-0.00003331" iyy="0.00056452" iyz="-0.00028624" izz="0.00078957" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FR_thigh.STL" />
+        <mesh filename="package://htdw_4438/meshes/FR_thigh.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FR_thigh.STL" />
+        <mesh filename="package://htdw_4438/meshes/FR_thigh.STL" />
       </geometry>
     </collision>
   </link>
@@ -203,21 +203,21 @@
   <!-- 前右腿FR - 小腿：连杆+关节（前右大腿→前右小腿） -->
   <link name="fr_calf">
     <inertial>
-      <origin xyz="0.0109 0.0001 -0.0530" rpy="0 0 0" />
-      <mass value="0.0403" />
-      <inertia ixx="0.0002" ixy="0.0000" ixz="0.0000" iyy="0.0002" iyz="0.0000" izz="0.0000" />
+      <origin xyz="0.01085394 0.00011547 -0.05299045" rpy="0 0 0" />
+      <mass value="0.04033111" />
+      <inertia ixx="0.00017737" ixy="-0.00000005" ixz="0.00002982" iyy="0.00018459" iyz="-0.00000004" izz="0.00000843" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FR_calf.STL" />
+        <mesh filename="package://htdw_4438/meshes/FR_calf.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FR_calf.STL" />
+        <mesh filename="package://htdw_4438/meshes/FR_calf.STL" />
       </geometry>
     </collision>
   </link>
@@ -232,21 +232,21 @@
   <!-- 前右腿FR - 脚部：连杆+固定关节（前右小腿→前右脚） -->
   <link name="fr_foot">
     <inertial>
-      <origin xyz="0.0038 -0.0007 0.0154" rpy="0 0 0" />
-      <mass value="0.0066" />
-      <inertia ixx="0.0000" ixy="0.0000" ixz="0.0000" iyy="0.0000" iyz="0.0000" izz="0.0000" />
+      <origin xyz="0.00384334 -0.00065935 0.01540433" rpy="0 0 0" />
+      <mass value="0.00657865" />
+      <inertia ixx="0.00000202" ixy="0.00000003" ixz="-0.00000043" iyy="0.00000222" iyz="0.00000009" izz="0.00000049" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FR_foot.STL" />
+        <mesh filename="package://htdw_4438/meshes/FR_foot.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/FR_foot.STL" />
+        <mesh filename="package://htdw_4438/meshes/FR_foot.STL" />
       </geometry>
     </collision>
   </link>
@@ -259,21 +259,21 @@
   <!-- 后左腿RL - 髋部：连杆+关节（基座→后左髋） -->
   <link name="rl_hip">
     <inertial>
-      <origin xyz="-0.0327 0.0044 0.0001" rpy="0 0 0" />
-      <mass value="0.2924" />
-      <inertia ixx="0.0001" ixy="0.0000" ixz="0.0000" iyy="0.0004" iyz="0.0000" izz="0.0004" />
+      <origin xyz="-0.03269580 0.00444394 0.00009507" rpy="0 0 0" />
+      <mass value="0.29235822" />
+      <inertia ixx="0.00008921" ixy="0.00004438" ixz="0.00000113" iyy="0.00040664" iyz="-0.00000010" izz="0.00040549" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RL_hip.STL" />
+        <mesh filename="package://htdw_4438/meshes/RL_hip.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RL_hip.STL" />
+        <mesh filename="package://htdw_4438/meshes/RL_hip.STL" />
       </geometry>
     </collision>
   </link>
@@ -288,21 +288,21 @@
   <!-- 后左腿RL - 大腿：连杆+关节（后左髋→后左大腿） -->
   <link name="rl_thigh">
     <inertial>
-      <origin xyz="-0.0014 0.0379 -0.0117" rpy="0 0 0" />
-      <mass value="0.4104" />
-      <inertia ixx="0.0012" ixy="0.0000" ixz="0.0000" iyy="0.0006" iyz="0.0003" izz="0.0008" />
+      <origin xyz="-0.00137569 0.03790927 -0.01165342" rpy="0 0 0" />
+      <mass value="0.41040818" />
+      <inertia ixx="0.00122480" ixy="0.00003407" ixz="-0.00003634" iyy="0.00056530" iyz="0.00028736" izz="0.00079023" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RL_thigh.STL" />
+        <mesh filename="package://htdw_4438/meshes/RL_thigh.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RL_thigh.STL" />
+        <mesh filename="package://htdw_4438/meshes/RL_thigh.STL" />
       </geometry>
     </collision>
   </link>
@@ -317,21 +317,21 @@
   <!-- 后左腿RL - 小腿：连杆+关节（后左大腿→后左小腿） -->
   <link name="rl_calf">
     <inertial>
-      <origin xyz="0.0108 -0.0001 -0.0529" rpy="0 0 0" />
-      <mass value="0.0403" />
-      <inertia ixx="0.0002" ixy="0.0000" ixz="0.0000" iyy="0.0002" iyz="0.0000" izz="0.0000" />
+      <origin xyz="0.01082722 -0.00011477 -0.05285719" rpy="0 0 0" />
+      <mass value="0.04033111" />
+      <inertia ixx="0.00017694" ixy="0.00000005" ixz="0.00002974" iyy="0.00018413" iyz="0.00000004" izz="0.00000842" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RL_calf.STL" />
+        <mesh filename="package://htdw_4438/meshes/RL_calf.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RL_calf.STL" />
+        <mesh filename="package://htdw_4438/meshes/RL_calf.STL" />
       </geometry>
     </collision>
   </link>
@@ -346,21 +346,21 @@
   <!-- 后左腿RL - 脚部：连杆+固定关节（后左小腿→后左脚） -->
   <link name="rl_foot">
     <inertial>
-      <origin xyz="0.0038 -0.0007 0.0154" rpy="0 0 0" />
-      <mass value="0.0066" />
-      <inertia ixx="0.0000" ixy="0.0000" ixz="0.0000" iyy="0.0000" iyz="0.0000" izz="0.0000" />
+      <origin xyz="0.00384334 -0.00065935 0.01540433" rpy="0 0 0" />
+      <mass value="0.00657865" />
+      <inertia ixx="0.00000202" ixy="0.00000003" ixz="-0.00000043" iyy="0.00000222" iyz="0.00000009" izz="0.00000049" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RL_foot.STL" />
+        <mesh filename="package://htdw_4438/meshes/RL_foot.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RL_foot.STL" />
+        <mesh filename="package://htdw_4438/meshes/RL_foot.STL" />
       </geometry>
     </collision>
   </link>
@@ -373,21 +373,21 @@
   <!-- 后右腿RR - 髋部：连杆+关节（基座→后右髋） -->
   <link name="rr_hip">
     <inertial>
-      <origin xyz="-0.0327 -0.0044 -0.0001" rpy="0 0 0" />
-      <mass value="0.2924" />
-      <inertia ixx="0.0001" ixy="0.0000" ixz="0.0000" iyy="0.0004" iyz="0.0000" izz="0.0004" />
+      <origin xyz="-0.03269580 -0.00444394 -0.00009507" rpy="0 0 0" />
+      <mass value="0.29235822" />
+      <inertia ixx="0.00008921" ixy="-0.00004438" ixz="-0.00000113" iyy="0.00040664" iyz="-0.00000010" izz="0.00040549" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RR_hip.STL" />
+        <mesh filename="package://htdw_4438/meshes/RR_hip.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RR_hip.STL" />
+        <mesh filename="package://htdw_4438/meshes/RR_hip.STL" />
       </geometry>
     </collision>
   </link>
@@ -402,21 +402,21 @@
   <!-- 后右腿RR - 大腿：连杆+关节（后右髋→后右大腿） -->
   <link name="rr_thigh">
     <inertial>
-      <origin xyz="-0.0013 -0.0379 -0.0116" rpy="0 0 0" />
-      <mass value="0.4104" />
-      <inertia ixx="0.0012" ixy="0.0000" ixz="0.0000" iyy="0.0006" iyz="-0.0003" izz="0.0008" />
+      <origin xyz="-0.00130371 -0.03791280 -0.01155686" rpy="0 0 0" />
+      <mass value="0.41040818" />
+      <inertia ixx="0.00122504" ixy="-0.00003226" ixz="-0.00003331" iyy="0.00056452" iyz="-0.00028624" izz="0.00078957" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RR_thigh.STL" />
+        <mesh filename="package://htdw_4438/meshes/RR_thigh.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RR_thigh.STL" />
+        <mesh filename="package://htdw_4438/meshes/RR_thigh.STL" />
       </geometry>
     </collision>
   </link>
@@ -431,21 +431,21 @@
   <!-- 后右腿RR - 小腿：连杆+关节（后右大腿→后右小腿） -->
   <link name="rr_calf">
     <inertial>
-      <origin xyz=" 0.0109 0.0001 -0.0530" rpy="0 0 0" />
-      <mass value="0.0403" />
-      <inertia ixx="0.0002" ixy="0.0000" ixz="0.0000" iyy="0.0002" iyz="0.0000" izz="0.0000" />
+      <origin xyz="0.01085394 0.00011547 -0.05299045" rpy="0 0 0" />
+      <mass value="0.04033111" />
+      <inertia ixx="0.00017737" ixy="-0.00000005" ixz="0.00002982" iyy="0.00018459" iyz="-0.00000004" izz="0.00000843" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RR_calf.STL" />
+        <mesh filename="package://htdw_4438/meshes/RR_calf.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RR_calf.STL" />
+        <mesh filename="package://htdw_4438/meshes/RR_calf.STL" />
       </geometry>
     </collision>
   </link>
@@ -460,21 +460,21 @@
   <!-- 后右腿RR - 脚部：连杆+固定关节（后右小腿→后右脚） -->
   <link name="rr_foot">
     <inertial>
-      <origin xyz="0.0038 -0.0007 0.0154" rpy="0 0 0" />
-      <mass value="0.0066" />
-      <inertia ixx="0.0000" ixy="0.0000" ixz="0.0000" iyy="0.0000" iyz="0.0000" izz="0.0000" />
+      <origin xyz="0.00384334 -0.00065935 0.01540433" rpy="0 0 0" />
+      <mass value="0.00657865" />
+      <inertia ixx="0.00000202" ixy="0.00000003" ixz="-0.00000043" iyy="0.00000222" iyz="0.00000009" izz="0.00000049" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RR_foot.STL" />
+        <mesh filename="package://htdw_4438/meshes/RR_foot.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://quadruped_robot/meshes/RR_foot.STL" />
+        <mesh filename="package://htdw_4438/meshes/RR_foot.STL" />
       </geometry>
     </collision>
   </link>
