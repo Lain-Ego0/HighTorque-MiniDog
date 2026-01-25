@@ -1,0 +1,5 @@
+<launch>
+  <!-- 节点启动 -->
+  <node name="joystick" pkg="joy" type="joy_node" output="screen"/>"
+  <node name="robot_emergency_stop" pkg="livelybot_bringup" type="robot_emergency_stop" output="screen"/>
+</launch>

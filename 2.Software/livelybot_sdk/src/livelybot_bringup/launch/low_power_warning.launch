@@ -1,0 +1,15 @@
+<launch>
+    <!-- 电池震动警告节点 -->
+    <node name="low_power_warning" pkg="livelybot_bringup" type="low_power_warning.py" output="screen">
+        <!-- 设置关键参数 -->
+        <param name="warning_level" type="int" value="78" />     <!-- 警告阈值（百分比） -->
+        <param name="vibration_intensity" type="double" value="0.8" /> <!-- 震动强度 (0.0-1.0) -->
+        <param name="vibration_duration" type="int" value="500" />   <!-- 震动持续时间（秒） -->
+        
+        <!-- 可选调试参数 -->
+        <param name="vibration_enabled" type="bool" value="true" />  <!-- 是否启用震动 -->
+    </node>
+    
+    <!-- 可选：模拟电池电量测试节点 -->
+    <!-- <node name="battery_simulator" pkg="your_package" type="battery_simulator.py" /> -->
+</launch>
