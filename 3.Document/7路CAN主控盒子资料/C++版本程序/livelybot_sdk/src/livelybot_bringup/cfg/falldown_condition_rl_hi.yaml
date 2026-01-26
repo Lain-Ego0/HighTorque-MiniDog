@@ -1,0 +1,28 @@
+# 姿态角度阈值配置文件
+# 单位：角度制
+
+enable: true  # 全局使能开关：true(启用检测)/false(关闭检测)
+
+warning_level:
+  minor: 0.6   # 轻级告警阈值（阈值的70%）
+  major: 0.9   # 重级告警阈值（阈值的90%）
+
+thresholds:
+  roll:
+    max: 210.0    # 最大滚转角（右侧倾斜）
+    min: 150.0   # 最小滚转角（左侧倾斜）
+    rotable: true
+    enable: true  # 滚转角检测使能
+
+  pitch:
+    max: 40.0   # 最大俯仰角（向前倾斜）
+    min: -45.0  # 最小俯仰角（向后倾斜）
+    rotable: false
+    enable: true  # 俯仰角检测使能
+    
+  yaw:
+    max: 25.0   # 最大俯仰角（向前倾斜）
+    min: -25.0  # 最小俯仰角（向后倾斜）
+    rotable: false
+    enable: false  # 俯仰角检测使能
+

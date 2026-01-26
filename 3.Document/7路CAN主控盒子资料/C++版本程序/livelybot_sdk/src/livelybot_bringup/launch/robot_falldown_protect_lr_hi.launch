@@ -1,0 +1,12 @@
+<launch>
+  <!-- 可配置参数：默认使用包内的配置 -->
+  <arg name="config_path" 
+       default="$(find livelybot_bringup)/cfg/falldown_condition_lr_hi.yaml" />
+  
+  <!-- 节点启动 -->
+  <node name="robot_falldown_protect" pkg="livelybot_bringup" type="robot_falldown_protect" output="screen">
+    <!-- 传递配置文件路径参数 -->
+    <param name="config_path" type="string" value="$(arg config_path)"/>
+    <!-- 可在此添加其他参数 -->
+  </node>
+</launch>
