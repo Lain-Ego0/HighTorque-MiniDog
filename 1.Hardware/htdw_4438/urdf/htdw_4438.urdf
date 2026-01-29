@@ -16,14 +16,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/base_link.STL" />
+        <mesh filename="../meshes/base_link.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0.025" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/base_link.STL" />
+        <box size="0.18 0.0935 0.138" />
       </geometry>
     </collision>
   </link>
@@ -38,14 +38,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FL_hip.STL" />
+        <mesh filename="../meshes/FL_hip.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.035 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FL_hip.STL" />
+        <box size="0.06 0.047 0.062" />
       </geometry>
     </collision>
   </link>
@@ -54,7 +54,7 @@
     <parent link="base_link" />
     <child link="fl_hip" />
     <axis xyz="1 0 0" />
-    <limit lower="-0.3" upper="0.6" effort="10" velocity="9.95" initial="0"/>
+    <limit lower="-0.9" upper="0.9" effort="10" velocity="9.95" initial="0"/>
   </joint>
 
   <!-- 前左腿FL - 大腿：连杆+关节（前左髋→前左大腿） -->
@@ -67,14 +67,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FL_thigh.STL" />
+        <mesh filename="../meshes/FL_thigh.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="-0.007 0.06 -0.03" rpy="0 0.35 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FL_thigh.STL" />
+        <box size="0.05 0.025 0.12" />
       </geometry>
     </collision>
   </link>
@@ -83,7 +83,7 @@
     <parent link="fl_hip" />
     <child link="fl_thigh" />
     <axis xyz="0 1 0" />
-    <limit lower="0.2" upper="1.5" effort="10" velocity="9.95" initial="0.9"/>
+    <limit lower="-1.5" upper="3.5" effort="10" velocity="9.95" initial="0.9"/>
   </joint>
 
   <!-- 前左腿FL - 小腿：连杆+关节（前左大腿→前左小腿） -->
@@ -96,14 +96,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FL_calf.STL" />
+        <mesh filename="../meshes/FL_calf.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.013 0 -0.05" rpy="0 -0.2 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FL_calf.STL" />
+        <cylinder length="0.12" radius="0.01" />
       </geometry>
     </collision>
   </link>
@@ -112,7 +112,7 @@
     <parent link="fl_thigh" />
     <child link="fl_calf" />
     <axis xyz="0 1 0" />
-    <limit lower="-2.5" upper="-1.5" effort="10" velocity="9.95" initial="-1.8"/>
+    <limit lower="-2.5" upper="-1.2" effort="10" velocity="9.95" initial="-1.8"/>
   </joint>
 
   <!-- 前左腿FL - 脚部：连杆+固定关节（前左小腿→前左脚） -->
@@ -125,18 +125,18 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FL_foot.STL" />
+        <mesh filename="../meshes/FL_foot.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.0025 0 0.0127" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FL_foot.STL" />
+        <sphere radius="0.015" />
       </geometry>
     </collision>
   </link>
-  <joint name="fl_foot_joint" type="fixed">
+  <joint name="fl_foot_joint" type="fixed" dont_collapse="true">
     <origin xyz="0.00206 0.00006 -0.13694" rpy="0 0 0" />
     <parent link="fl_calf" />
     <child link="fl_foot" />
@@ -152,14 +152,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FR_hip.STL" />
+        <mesh filename="../meshes/FR_hip.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.035 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FR_hip.STL" />
+        <box size="0.06 0.047 0.062" />
       </geometry>
     </collision>
   </link>
@@ -168,7 +168,7 @@
     <parent link="base_link" />
     <child link="fr_hip" />
     <axis xyz="1 0 0" />
-    <limit lower="-0.6" upper="0.3" effort="10" velocity="9.95" initial="0.0"/>
+    <limit lower="-0.9" upper="0.9" effort="10" velocity="9.95" initial="0.0"/>
   </joint>
 
   <!-- 前右腿FR - 大腿：连杆+关节（前右髋→前右大腿） -->
@@ -181,14 +181,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FR_thigh.STL" />
+        <mesh filename="../meshes/FR_thigh.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="-0.007 -0.06 -0.03" rpy="0 0.35 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FR_thigh.STL" />
+        <box size="0.05 0.025 0.12" />
       </geometry>
     </collision>
   </link>
@@ -197,7 +197,7 @@
     <parent link="fr_hip" />
     <child link="fr_thigh" />
     <axis xyz="0 1 0" />
-    <limit lower="0.2" upper="1.5" effort="10" velocity="9.95" initial="0.9"/>
+    <limit lower="-1.5" upper="3.5" effort="10" velocity="9.95" initial="0.9"/>
   </joint>
 
   <!-- 前右腿FR - 小腿：连杆+关节（前右大腿→前右小腿） -->
@@ -210,14 +210,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FR_calf.STL" />
+        <mesh filename="../meshes/FR_calf.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.013 0 -0.05" rpy="0 -0.2 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FR_calf.STL" />
+        <cylinder length="0.12" radius="0.01" />
       </geometry>
     </collision>
   </link>
@@ -226,7 +226,7 @@
     <parent link="fr_thigh" />
     <child link="fr_calf" />
     <axis xyz="0 1 0" />
-    <limit lower="-2.5" upper="-1.5" effort="10" velocity="9.95" initial="-1.8"/>
+    <limit lower="-2.5" upper="-1.2" effort="10" velocity="9.95" initial="-1.8"/>
   </joint>
 
   <!-- 前右腿FR - 脚部：连杆+固定关节（前右小腿→前右脚） -->
@@ -239,18 +239,18 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FR_foot.STL" />
+        <mesh filename="../meshes/FR_foot.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.0025 0 0.0127" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/FR_foot.STL" />
+        <sphere radius="0.015" />
       </geometry>
     </collision>
   </link>
-  <joint name="fr_foot_joint" type="fixed">
+  <joint name="fr_foot_joint" type="fixed" dont_collapse="true">
     <origin xyz="0.00206 0.00006 -0.13694" rpy="0 0 0" />
     <parent link="fr_calf" />
     <child link="fr_foot" />
@@ -266,14 +266,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RL_hip.STL" />
+        <mesh filename="../meshes/RL_hip.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="-0.035 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RL_hip.STL" />
+        <box size="0.06 0.047 0.062" />
       </geometry>
     </collision>
   </link>
@@ -282,7 +282,7 @@
     <parent link="base_link" />
     <child link="rl_hip" />
     <axis xyz="1 0 0" />
-    <limit lower="-0.3" upper="0.6" effort="10" velocity="9.95" initial="0"/>
+    <limit lower="-0.9" upper="0.9" effort="10" velocity="9.95" initial="0"/>
   </joint>
 
   <!-- 后左腿RL - 大腿：连杆+关节（后左髋→后左大腿） -->
@@ -295,14 +295,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RL_thigh.STL" />
+        <mesh filename="../meshes/RL_thigh.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+     <origin xyz="-0.007 0.06 -0.03" rpy="0 0.35 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RL_thigh.STL" />
+        <box size="0.05 0.025 0.12" />
       </geometry>
     </collision>
   </link>
@@ -311,7 +311,7 @@
     <parent link="rl_hip" />
     <child link="rl_thigh" />
     <axis xyz="0 1 0" />
-    <limit lower="0.2" upper="1.5" effort="10" velocity="9.95" initial="0.9"/>
+    <limit lower="-1.5" upper="3.5" effort="10" velocity="9.95" initial="0.9"/>
   </joint>
 
   <!-- 后左腿RL - 小腿：连杆+关节（后左大腿→后左小腿） -->
@@ -324,14 +324,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RL_calf.STL" />
+        <mesh filename="../meshes/RL_calf.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.013 0 -0.05" rpy="0 -0.2 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RL_calf.STL" />
+        <cylinder length="0.12" radius="0.01" />
       </geometry>
     </collision>
   </link>
@@ -340,7 +340,7 @@
     <parent link="rl_thigh" />
     <child link="rl_calf" />
     <axis xyz="0 1 0" />
-    <limit lower="-2.5" upper="-1.5" effort="10" velocity="9.95" initial="-1.8"/>
+    <limit lower="-2.5" upper="-1.2" effort="10" velocity="9.95" initial="-1.8"/>
   </joint>
 
   <!-- 后左腿RL - 脚部：连杆+固定关节（后左小腿→后左脚） -->
@@ -353,18 +353,18 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RL_foot.STL" />
+        <mesh filename="../meshes/RL_foot.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.0025 0 0.0127" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RL_foot.STL" />
+        <sphere radius="0.015" />
       </geometry>
     </collision>
   </link>
-  <joint name="rl_foot_joint" type="fixed">
+  <joint name="rl_foot_joint" type="fixed" dont_collapse="true">
     <origin xyz="-0.00206 0.00006 -0.13694" rpy="0 0 0" />
     <parent link="rl_calf" />
     <child link="rl_foot" />
@@ -380,14 +380,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RR_hip.STL" />
+        <mesh filename="../meshes/RR_hip.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="-0.035 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RR_hip.STL" />
+        <box size="0.06 0.047 0.062" />
       </geometry>
     </collision>
   </link>
@@ -396,7 +396,7 @@
     <parent link="base_link" />
     <child link="rr_hip" />
     <axis xyz="1 0 0" />
-    <limit lower="-0.6" upper="0.3" effort="10" velocity="9.95" initial="0"/>
+    <limit lower="-0.9" upper="0.9" effort="10" velocity="9.95" initial="0"/>
   </joint>
 
   <!-- 后右腿RR - 大腿：连杆+关节（后右髋→后右大腿） -->
@@ -409,14 +409,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RR_thigh.STL" />
+        <mesh filename="../meshes/RR_thigh.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="-0.007 -0.06 -0.03" rpy="0 0.35 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RR_thigh.STL" />
+        <box size="0.05 0.025 0.12" />
       </geometry>
     </collision>
   </link>
@@ -425,7 +425,7 @@
     <parent link="rr_hip" />
     <child link="rr_thigh" />
     <axis xyz="0 1 0" />
-    <limit lower="0.2" upper="1.5" effort="10" velocity="9.95" initial="0.9"/>
+    <limit lower="-1.5" upper="3.5" effort="10" velocity="9.95" initial="0.9"/>
   </joint>
 
   <!-- 后右腿RR - 小腿：连杆+关节（后右大腿→后右小腿） -->
@@ -438,14 +438,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RR_calf.STL" />
+        <mesh filename="../meshes/RR_calf.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.013 0 -0.05" rpy="0 -0.2 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RR_calf.STL" />
+        <cylinder length="0.12" radius="0.01" />
       </geometry>
     </collision>
   </link>
@@ -454,7 +454,7 @@
     <parent link="rr_thigh" />
     <child link="rr_calf" />
     <axis xyz="0 1 0" />
-    <limit lower="-2.5" upper="-1.5" effort="10" velocity="9.95" initial="-1.8"/>
+    <limit lower="-2.5" upper="-1.2" effort="10" velocity="9.95" initial="-1.8"/>
   </joint>
 
   <!-- 后右腿RR - 脚部：连杆+固定关节（后右小腿→后右脚） -->
@@ -467,18 +467,18 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RR_foot.STL" />
+        <mesh filename="../meshes/RR_foot.STL" />
       </geometry>
       <material name="white_material" />
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.0025 0 0.0127" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://htdw_4438/meshes/RR_foot.STL" />
+        <sphere radius="0.015" />
       </geometry>
     </collision>
   </link>
-  <joint name="rr_foot_joint" type="fixed">
+  <joint name="rr_foot_joint" type="fixed" dont_collapse="true">
     <origin xyz="-0.00206 0.00006 -0.13694" rpy="0 0 0" />
     <parent link="rr_calf" />
     <child link="rr_foot" />
