@@ -99,7 +99,3 @@ conda env create -f Lain_env.yml
 
 * **核心技术文档**：[Lain 的笔记库 (飞书 Wiki)](https://www.google.com/search?q=https://wcn9j5638vrr.feishu.cn/wiki/space/757098375279517715)
 * **项目前身**：[高擎机电 HTM5046 开源版](https://www.google.com/search?q=https://www.hightorque.cn/)
-
----
-
-**你需要我为你补充具体的环境安装命令（如 `pip install` 依赖项）或是具体的 `train.py` 启动参数说明吗？**
