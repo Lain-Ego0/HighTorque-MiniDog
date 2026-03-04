@@ -1,101 +1,125 @@
-# HTDW4438-OpenDog
+<p align="center">
+  <img src="5.Images/V2.png" width="780" alt="HTDW4438-OpenDog CAD render" />
+</p>
 
-## English Version
+<h1 align="center">HTDW4438-OpenDog</h1>
 
-### 🐾 Project Overview
+<p align="center">
+  <b>简体中文</b> | <a href="README_EN.md">English</a>
+</p>
 
-**HTDW4438-OpenDog** is a full-stack open-source quadruped robot project. It provides a comprehensive framework ranging from mechanical URDF design to advanced reinforcement learning (RL) locomotion control. The project is a specialized iteration based on the **HighTorque HTM5046** open-source platform.
+<p align="center">
+  全栈开源四足机器人项目：机械/URDF → Isaac Gym 强化学习训练 → Sim2Real 部署
+</p>
 
-### 🚀 Key Features
-
-* **Agile Locomotion**: Developed based on the **HIMloco** (Hybrid Internal Model) algorithm for robust movement.
-* **High-Performance Training**: Utilizes **NVIDIA Isaac Gym** for accelerated RL training.
-* **Sim-to-Real Ready**: Includes a specialized `livelybot_sdk` and deployment scripts to bridge the gap between simulation and physical hardware.
-* **Documentation**: Comprehensive technical notes and progress tracking via Feishu Wiki.
-
-### 📂 Repository Structure
-
-#### 1. HTDW4438-OpenDog (Main Repo)
-
-* **`1.Hardware/`**: Contains URDF models (V1.5) and mechanical assembly files.
-* **`2.Software/livelybot_sdk/`**: Core SDK for motor control and communication.
-* `motor_set_zero.sh`: Calibration script for motor zeroing.
-* `canboard_update.sh`: Firmware update tool for CAN control boards.
-
-
-* **`3.Document/`**: Includes BOM (Bill of Materials) and motor technical manuals.
-* **`4.Paper/`**: Reference research papers including HIMloco.
-
-#### 2. [Lain_isaacgym](https://github.com/Lain-Ego0/Lain_isaacgym) (Training Framework)
-
-* **`legged_gym/`**: Core environment for quadruped training.
-* **`deploy/`**: Scripts and tools for exporting models to the real robot.
-* **`resources/robots/`**: Contains the `htdw_4438.urdf` used in simulation.
-* **`Lain_env.yml`**: Conda environment configuration for easy setup.
-
-### 🛠️ Quick Start
-
-1. **Environment Setup**:
-```bash
-conda env create -f Lain_env.yml
-```
-
-
-2. **Training**: Navigate to the `Lain_isaacgym` directory and start the RL training process using PPO.
-3. **Hardware Deployment**: Use the provided shell scripts in `2.Software/` to initialize and test the motors.
-
-### 🔗 Links
-
-* **Technical Wiki**: [Lain's Note Library (Feishu)](https://www.google.com/search?q=https://wcn9j5638vrr.feishu.cn/wiki/space/757098375279517715)
-* **Project Predecessor**: [HighTorque HTM5046](https://www.google.com/search?q=https://www.hightorque.cn/)
+<p align="center">
+  <a href="#仓库结构">仓库结构</a> ·
+  <a href="https://github.com/Lain-Ego0/HTDW4438_Isaacgym">训练框架</a> ·
+  <a href="https://github.com/Lain-Ego0/LeggedWiki">LeggedWiki</a> ·
+  <a href="#参考平台高擎机电-htm5046">高擎机电 HTM5046</a>
+</p>
 
 ---
 
-## 中文版本
+## 目录
 
-### 🐾 项目简介
+- [项目简介](#项目简介)
+- [项目亮点](#项目亮点)
+- [图片预览](#图片预览)
+- [仓库结构](#仓库结构)
+- [相关仓库](#相关仓库)
+- [快速开始](#快速开始)
+- [参考平台：高擎机电 HTM5046](#参考平台高擎机电-htm5046)
+- [引用与致谢](#引用与致谢)
 
-**HTDW4438-OpenDog** 是一个全栈开源四足机器人项目。本项目提供了从机械 URDF 设计到高级强化学习 (RL) 运动控制的完整框架。该项目是在 **高擎机电 HTM5046** 开源平台基础上进行的针对性迭代与优化。
+## 项目简介
 
-### 🚀 核心特性
+**HTDW4438-OpenDog** 是一个全栈开源四足机器人项目，覆盖从机械结构与 URDF 建模到强化学习（RL）运动控制的完整链路，并提供 Sim2Real 的部署接口与脚本。
 
-* **敏捷运动能力**：基于 **HIMloco** (Hybrid Internal Model) 算法开发，实现稳健的运动表现。
-* **高性能训练**：利用 **NVIDIA Isaac Gym** 进行硬件加速的强化学习训练。
-* **仿真到实机 (Sim-to-Real)**：集成 `livelybot_sdk` 和部署脚本，打通仿真环境与物理实机的部署链路。
-* **详尽文档**：通过飞书 Wiki 维护完整的技术笔记和项目进度。
+本项目是在 **高擎机电（HighTorque）HTM5046** 开源平台基础上进行的针对性迭代与优化（结构/URDF/训练与部署流程适配）。
 
-### 📂 仓库目录结构
+## 项目亮点
 
-#### 1. HTDW4438-OpenDog (主仓库)
+- **敏捷运动能力**：以 **HIMloco**（Hybrid Internal Model）等思想为参考，面向稳定、鲁棒的运动控制。
+- **高性能训练**：基于 **NVIDIA Isaac Gym** 的 GPU 加速强化学习训练流程。
+- **Sim-to-Real**：配套 `livelybot_sdk` 与部署脚本，打通仿真到实机的链路。
+- **资料沉淀**：配套知识库与文档仓库，便于快速上手与排障。
 
-* **`1.Hardware/`**：包含 URDF 模型 (V1.5) 及机械组装文件。
-* **`2.Software/livelybot_sdk/`**：电机控制与通信的核心 SDK。
-* `motor_set_zero.sh`：电机校准与归零脚本。
-* `canboard_update.sh`：CAN 主控板固件更新工具。
+## 图片预览
 
+<p align="center">
+  <img src="5.Images/V1.png" width="260" alt="V1" />
+  <img src="5.Images/V2.png" width="260" alt="V2" />
+  <img src="5.Images/V3.png" width="260" alt="V3" />
+</p>
 
-* **`3.Document/`**：包含 BOM 表、电机技术手册及 CAN 控制资料。
-* **`4.Paper/`**：核心参考论文，涵盖 HIMloco 等前沿研究。
+## 仓库结构
 
-#### 2. [Lain_isaacgym](https://github.com/Lain-Ego0/Lain_isaacgym) (训练框架)
-
-* **`legged_gym/`**：四足机器人训练的核心环境代码。
-* **`deploy/`**：用于将训练好的模型导出至实机的工具包。
-* **`resources/robots/`**：仿真中使用的 `htdw_4438.urdf` 机器人描述文件。
-* **`Lain_env.yml`**：Conda 环境配置文件，方便快速搭建开发环境。
-
-### 🛠️ 快速开始
-
-1. **环境配置**：
-```bash
-conda env create -f Lain_env.yml
+```text
+HTDW4438-OpenDog
+├── 1.Hardware/               # 机械文件、URDF、网格等
+│   └── htdw_4438/             # URDF 包（meshes/、urdf/、launch/）
+├── 2.Software/
+│   └── livelybot_sdk/         # 电机控制与通信 SDK（含常用脚本）
+├── 3.Document/                # BOM、手册、STEP 等资料
+├── 4.Paper/                   # 参考论文（HIMloco 等）
+├── 5.Images/                  # 项目渲染图
+└── assets/                    # README 相关素材
 ```
 
+## 相关仓库
 
-2. **启动训练**：进入 `Lain_isaacgym` 目录，使用 PPO 算法开启强化学习训练。
-3. **硬件部署**：利用 `2.Software/` 目录下的脚本对电机进行初始化测试。
+- **训练框架（Isaac Gym）**：[`HTDW4438_Isaacgym`](https://github.com/Lain-Ego0/HTDW4438_Isaacgym)
+- **配套知识库**：[`LeggedWiki`](https://github.com/Lain-Ego0/LeggedWiki)
+- **技术笔记（飞书 Wiki）**：<https://wcn9j5638vrr.feishu.cn/wiki/space/757098375279517715>
 
-### 🔗 相关链接
+## 快速开始
 
-* **核心技术文档**：[Lain 的笔记库 (飞书 Wiki)](https://www.google.com/search?q=https://wcn9j5638vrr.feishu.cn/wiki/space/757098375279517715)
-* **项目前身**：[高擎机电 HTM5046 开源版](https://www.google.com/search?q=https://www.hightorque.cn/)
+### 1) 查看/使用 URDF
+
+- URDF：`1.Hardware/htdw_4438/urdf/htdw_4438.urdf`
+- 网格：`1.Hardware/htdw_4438/meshes/`
+- Gazebo/RViz 启动文件：`1.Hardware/htdw_4438/launch/`
+
+### 2) 强化学习训练（推荐跟随训练仓库）
+
+训练与部署相关代码已迁移到：[`HTDW4438_Isaacgym`](https://github.com/Lain-Ego0/HTDW4438_Isaacgym)。
+
+最小环境安装示例（以训练仓库为准）：
+
+```bash
+git clone https://github.com/Lain-Ego0/HTDW4438_Isaacgym.git
+cd HTDW4438_Isaacgym
+conda env create -f HTDW4438.yml
+conda activate HTDW4438
+pip install -e rsl_rl
+pip install -e legged_gym
+```
+
+### 3) 实机 SDK 与脚本
+
+- SDK 目录：`2.Software/livelybot_sdk/`
+- 常用脚本：
+  - `2.Software/livelybot_sdk/motor_set_zero.sh`（电机归零/校准）
+  - `2.Software/livelybot_sdk/canboard_update.sh`（CAN 板固件更新）
+  - 更多说明见：`2.Software/livelybot_sdk/readme.md`
+
+> 提示：涉及电机上电与归零前，建议先将机身抬空/卸载，确认急停与限位策略，避免误动作造成损坏。
+
+## 参考平台：高擎机电 HTM5046
+
+- 高擎机电（HighTorque）官网：<https://www.hightorque.cn/>
+- HighTorque 英文站点：<https://www.hightorquerobotics.com/>
+- 四足开源资料下载（含结构/硬件/软件/运动控制/URDF 等）：<https://www.hightorque.cn/ziliaoxiazai/sizujqrosxz.html>
+- 官方开源资料包通常包含：结构 3D 文件（STEP）、硬件工程文件（含 Gerber）、软件（SDK 与固件）、运动控制相关文件（URDF）等。
+
+<p align="center">
+  <img src="assets/image-20260120192404432.png" width="520" alt="HighTorque 四足开源资料下载页面（截图）" />
+</p>
+
+## 引用与致谢
+
+- 结构与开源基线：高擎机电 HTM5046
+- 运动控制与训练参考：`4.Paper/`（HIMloco 等）
+- 强化学习训练框架与工具链：`HTDW4438_Isaacgym`
+- 配套知识沉淀：`LeggedWiki`
