@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="5.Images/V2.png" width="780" alt="HTDW4438-OpenDog CAD render" />
+  <img src="5.Images/V3.png" width="780" alt="HTDW4438-OpenDog CAD render" />
 </p>
 
 <h1 align="center">HTDW4438-OpenDog</h1>
@@ -23,12 +23,16 @@
 
 ## 目录
 
+- [目录](#目录)
 - [项目简介](#项目简介)
 - [项目亮点](#项目亮点)
 - [图片预览](#图片预览)
 - [仓库结构](#仓库结构)
 - [相关仓库](#相关仓库)
 - [快速开始](#快速开始)
+  - [1) 查看/使用 URDF](#1-查看使用-urdf)
+  - [2) 强化学习训练](#2-强化学习训练)
+  - [3) 实机 SDK 与脚本](#3-实机-sdk-与脚本)
 - [参考平台：高擎机电 HTM5046](#参考平台高擎机电-htm5046)
 - [引用与致谢](#引用与致谢)
 
@@ -48,7 +52,6 @@
 ## 图片预览
 
 <p align="center">
-  <img src="5.Images/V1.png" width="260" alt="V1" />
   <img src="5.Images/V2.png" width="260" alt="V2" />
   <img src="5.Images/V3.png" width="260" alt="V3" />
 </p>
@@ -79,9 +82,8 @@ HTDW4438-OpenDog
 
 - URDF：`1.Hardware/htdw_4438/urdf/htdw_4438.urdf`
 - 网格：`1.Hardware/htdw_4438/meshes/`
-- Gazebo/RViz 启动文件：`1.Hardware/htdw_4438/launch/`
 
-### 2) 强化学习训练（推荐跟随训练仓库）
+### 2) 强化学习训练
 
 训练与部署相关代码已迁移到：[`HTDW4438_Isaacgym`](https://github.com/Lain-Ego0/HTDW4438_Isaacgym)。
 
@@ -119,7 +121,4 @@ pip install -e legged_gym
 
 ## 引用与致谢
 
-- 结构与开源基线：高擎机电 HTM5046
-- 运动控制与训练参考：`4.Paper/`（HIMloco 等）
-- 强化学习训练框架与工具链：`HTDW4438_Isaacgym`
-- 配套知识沉淀：`LeggedWiki`
+- 本作品于高擎机电实习期间完成，感谢高擎机电的支持

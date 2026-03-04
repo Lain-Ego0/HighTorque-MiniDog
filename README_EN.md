@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="5.Images/V2.png" width="780" alt="HTDW4438-OpenDog CAD render" />
+  <img src="5.Images/V3.png" width="780" alt="HTDW4438-OpenDog CAD render" />
 </p>
 
 <h1 align="center">HTDW4438-OpenDog</h1>
@@ -23,12 +23,16 @@
 
 ## Contents
 
+- [Contents](#contents)
 - [Overview](#overview)
 - [Highlights](#highlights)
 - [Gallery](#gallery)
 - [Repository Layout](#repository-layout)
 - [Related Repos](#related-repos)
 - [Quick Start](#quick-start)
+  - [1) URDF](#1-urdf)
+  - [2) RL Training](#2-rl-training)
+  - [3) Real-robot SDK & scripts](#3-real-robot-sdk--scripts)
 - [Reference Platform: HighTorque HTM5046](#reference-platform-hightorque-htm5046)
 - [Acknowledgements](#acknowledgements)
 
@@ -48,7 +52,6 @@ This project is a focused iteration/adaptation based on the open-source **HighTo
 ## Gallery
 
 <p align="center">
-  <img src="5.Images/V1.png" width="260" alt="V1" />
   <img src="5.Images/V2.png" width="260" alt="V2" />
   <img src="5.Images/V3.png" width="260" alt="V3" />
 </p>
@@ -79,9 +82,8 @@ HTDW4438-OpenDog
 
 - URDF: `1.Hardware/htdw_4438/urdf/htdw_4438.urdf`
 - Meshes: `1.Hardware/htdw_4438/meshes/`
-- Gazebo/RViz launch files: `1.Hardware/htdw_4438/launch/`
 
-### 2) RL Training (recommended: follow the training repo)
+### 2) RL Training
 
 Training/deployment code lives in: [HTDW4438_Isaacgym](https://github.com/Lain-Ego0/HTDW4438_Isaacgym).
 
@@ -119,7 +121,4 @@ pip install -e legged_gym
 
 ## Acknowledgements
 
-- Open-source baseline: HighTorque HTM5046
-- Locomotion & RL references: `4.Paper/` (HIMloco, etc.)
-- RL training toolchain: `HTDW4438_Isaacgym`
-- Knowledge & notes: `LeggedWiki`
+- This work was completed during an internship at HighTorque. Thanks to HighTorque for the support.
