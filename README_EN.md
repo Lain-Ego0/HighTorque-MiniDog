@@ -35,7 +35,7 @@
 
 ## Project Positioning
 
-`HTDW4438` is a **fully independent** quadruped robot project. It is **not** an iteration of the HighTorque (高擎机电) HTM5046 platform.
+`HTDW4438` is a desktop-class quadruped robot based on HighTorque's **HTDW4438** ultra-small, high-performance motors.
 
 `HTDW4438-OpenDog` is the repository for robot-body resources, including:
 
