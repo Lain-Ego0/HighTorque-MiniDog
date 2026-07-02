@@ -2,7 +2,7 @@
   <img src="5.Images/V3.png" width="780" alt="HTDW4438-OpenDog CAD render" />
 </p>
 
-<h1 align="center">HTDW4438-OpenDog</h1>
+<h1 align="center">HighTorque-MiniDog</h1>
 
 <p align="center">
   <b>简体中文</b> | <a href="README_EN.md">English</a>
